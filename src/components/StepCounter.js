@@ -33,8 +33,6 @@ const StepCounter = ({ max, step }) => {
                         counter >= max ? max :
                             counter
                 }
-
-
             </p>
             <button onClick={() => dispatch({ type: 'countUp', step: step, max: max })}>+</button>
             <button onClick={() => dispatch({ type: 'countDown', step: step })}>-</button>
