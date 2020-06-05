@@ -6,7 +6,6 @@ const initialState = {
 };
 
 const convertToCelsius = (state, input) => {
-    console.log(input);
     return {
         ...state,
         fahrenheit: input,
@@ -15,7 +14,6 @@ const convertToCelsius = (state, input) => {
 }
 
 const convertToFahrenheit = (state, input) => {
-    console.log(input);
     return {
         ...state,
         celsius: input,
