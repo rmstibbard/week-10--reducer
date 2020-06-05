@@ -2,8 +2,6 @@ import React, { useReducer } from "react";
 
 const initialState = { clicked: false };
 
-let action = { type: "CLICKED" };
-
 const reducer = (state, action) => {
     switch (action.type) {
         case "CLICKED": return {

@@ -1,5 +1,6 @@
 import React from 'react';
 import Clicked from './components/Clicked';
+import StepCounter from './components/StepCounter';
 
 import './App.css';
 
@@ -10,6 +11,9 @@ function App() {
 
       <h2>Clicked</h2>
       <Clicked />
+
+      <h2>StepCounter</h2>
+      <StepCounter max={100} step={5} />
 
     </>
   );
