@@ -24,7 +24,6 @@ const StepCounter = ({ max, step }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { counter } = state;
 
-
     return (
         <>
             <p>
