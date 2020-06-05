@@ -1,46 +1,56 @@
 import React, { useReducer } from 'react';
 
 const initialState = {
-    inputC: "",
-    inputF: ""
+    celsius: 0,
+    fahrenheit: 0
 };
+
+const convertToCelsius = (state, input) => {
+    console.log(input);
+    return {
+        ...state,
+        fahrenheit: input,
+        celsius: ((input - 32)) * (5 / 9)
+    }
+}
+
+const convertToFahrenheit = (state, input) => {
+    console.log(input);
+    return {
+        ...state,
+        celsius: input,
+        fahrenheit: (input * (9 / 5) + 32)
+    }
+}
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'CONVERT_TO_CELSIUS': return {
-            ...state,
-            inputC: ((state.inputF - 32) * (5 / 9)).toFixed(3)
-        };
-
-        case 'CONVERT_TO_FAHRENHEIT': return {
-            ...state,
-            inputF: ((state.inputC * (9 / 5)) + 32).toFixed(3)
-        };
-
+        case "CONVERT_TO_CELSIUS": return convertToCelsius(state, action.input)
+        case "CONVERT_TO_FAHRENHEIT": return convertToFahrenheit(state, action.input)
     }
 };
 
 const TempConverter = () => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { inputF, inputC } = state;
+    const { celsius, fahrenheit } = state;
 
     return (
         <>
-            <label htmlFor="inputF">Fahrenheit: </label>
+            <label htmlFor="fahrenheit">Fahrenheit: </label>
             <input
                 type="text"
-                value={inputF}
-                name="inputF"
-                onChange={() => dispatch({ type: 'CONVERT_TO_CELSIUS' })}
+                name="fahrenheit"
+                value={fahrenheit}
+                onChange={(e) => dispatch({ type: 'CONVERT_TO_CELSIUS', input: +(e.currentTarget.value) })}
             />
-
-            <label htmlFor="inputC">Celsius: </label>
+            <br />
+            <label htmlFor="celsius">Celsius: </label>
             <input
                 type="text"
-                value={inputC}
-                name="inputC"
-                onChange={() => dispatch({ type: 'CONVERT_TO_FAHRENHEIT' })}
+                name="celsius"
+                value={celsius}
+                onChange={(e) => dispatch({ type: 'CONVERT_TO_FAHRENHEIT', input: +(e.currentTarget.value) })}
             />
         </>
     )
