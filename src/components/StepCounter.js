@@ -24,9 +24,18 @@ const StepCounter = ({ max, step }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { counter } = state;
 
+
     return (
         <>
-            <p>{counter}</p>
+            <p>
+                {
+                    counter <= 0 ? 0 :
+                        counter >= max ? max :
+                            counter
+                }
+
+
+            </p>
             <button onClick={() => dispatch({ type: 'countUp', step: step, max: max })}>+</button>
             <button onClick={() => dispatch({ type: 'countDown', step: step })}>-</button>
         </>
