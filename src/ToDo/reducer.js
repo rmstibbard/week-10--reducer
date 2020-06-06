@@ -14,3 +14,9 @@ export const addItem = (state, { value }) => {
     }
 }
 
+export const removeItem = (state, { index }) => {
+    return {
+        ...state,                                           // Copied from answers
+        items: state.items.filter((_, i) => i !== index),   // Returns only those items whose index number is
+    };                                                      // not the one passed in
+};
