@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import '../../src/App.css';
 
 const initialState = {
     celsius: 0,
@@ -9,7 +10,7 @@ const convertToCelsius = (state, input) => {
     return {
         ...state,
         fahrenheit: input,
-        celsius: ((input - 32)) * (5 / 9)
+        celsius: Math.round(((input - 32)) * (5 / 9))
     }
 }
 
@@ -17,7 +18,7 @@ const convertToFahrenheit = (state, input) => {
     return {
         ...state,
         celsius: input,
-        fahrenheit: (input * (9 / 5) + 32)
+        fahrenheit: Math.round((input * (9 / 5) + 32))
     }
 }
 
